@@ -34,13 +34,8 @@ func NewIntermediateProfile(name string, iss *x509.Certificate, issPriv interfac
 		IsCA:      true,
 		NotBefore: notBefore,
 		// 10 year intermediate certificate validity.
-		NotAfter: notBefore.Add(time.Hour * 24 * 365 * 10),
-		KeyUsage: x509.KeyUsageKeyEncipherment |
-			x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign | x509.KeyUsageCRLSign,
-		ExtKeyUsage: []x509.ExtKeyUsage{
-			x509.ExtKeyUsageServerAuth,
-			x509.ExtKeyUsageClientAuth,
-		},
+		NotAfter:              notBefore.Add(time.Hour * 24 * 365 * 10),
+		KeyUsage:              x509.KeyUsageCertSign | x509.KeyUsageCRLSign,
 		BasicConstraintsValid: true,
 		MaxPathLen:            0,
 		MaxPathLenZero:        true,

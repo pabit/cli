@@ -64,10 +64,8 @@ func defaultRootTemplate(cn string) (*x509.Certificate, error) {
 		IsCA:      true,
 		NotBefore: notBefore,
 		// 10 year root certificate validity.
-		NotAfter: notBefore.Add(time.Hour * 24 * 365 * 10),
-		KeyUsage: x509.KeyUsageKeyEncipherment |
-			x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign |
-			x509.KeyUsageCRLSign,
+		NotAfter:              notBefore.Add(time.Hour * 24 * 365 * 10),
+		KeyUsage:              x509.KeyUsageCertSign | x509.KeyUsageCRLSign,
 		BasicConstraintsValid: true,
 		MaxPathLen:            1,
 		MaxPathLenZero:        false,
